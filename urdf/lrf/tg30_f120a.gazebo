@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="lrf_tg30_f120a" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- LRFのlaserをgazebo上で可視化したい場合は、trueに設定してください -->
+  <!-- set to "true" to visualize the LRF laser on Gazebo -->
   <xacro:arg name="front_laser_visual" default="false" />
   <xacro:arg name="back_laser_visual" default="false" />
 

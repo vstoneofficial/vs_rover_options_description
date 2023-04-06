@@ -1,17 +1,17 @@
 <robot name="cam_stay_mega3" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <!--　depth camera高さ, 範囲:0.06 ~ 0.25 -->
+  <!--　depth camera height (m), value: 0.06 ~ 0.25 -->
   <xacro:property name="cam_frame_height" value="0.21" />
-  <!--　depth cameraピッチ角度 (rad), 範囲:0.0 ~ 0.78 -->
+  <!--　depth camera pitch angle (rad), value: 0.0 ~ 0.78 -->
   <xacro:property name="cam_pitch_angle" value="0.0" />
 
-  <!--　カメラステーの固定位置 x+:前, z+:上-->
+  <!--　camera stay mounting position (relative to rover) x+:front, z+:up-->
   <xacro:property name="cam_mount_frame_x_pos" value="0.0" />
   <xacro:property name="cam_mount_frame_y_pos" value="0.0" />
   <xacro:property name="cam_mount_frame_z_pos" value="0.0" />
 
-  <!-- 
-  Vstone カメラステーオプション
+<!--
+  Vstone camera stay option
   https://www.vstone.co.jp/robotshop/index.php?main_page=product_info&cPath=156_923&products_id=5315 
 -->
   <joint name="cam_stay_frame_joint" type="fixed">
