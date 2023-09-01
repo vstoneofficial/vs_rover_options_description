@@ -1,4 +1,4 @@
-<robot name="lrf_tg30_mega3" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="lrf_tg30_mecanum3" xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:include filename="$(find vs_rover_options_description)/urdf/lrf/tg30_mecanum3.gazebo" />
 
   <!-- placement of TG30 on Mecanumrover Ver.3.0 -->
