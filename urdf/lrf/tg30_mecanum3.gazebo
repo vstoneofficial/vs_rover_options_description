@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="lrf_tg30_mecanum3" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <!-- set to "true" to visualize the LRF laser on Gazebo -->
+ 
   <xacro:arg name="front_laser_visual" default="false" />
   <xacro:arg name="back_laser_visual" default="false" />
 
@@ -9,8 +9,6 @@
   <xacro:property name="DEG_TO_RAD" value="0.01745329251994329577" />
   <xacro:property name="LRF_ANGLE" value="172" />
 
-  <!-- LRF: TG30 -->
-  <!-- DATA: http://www.ydlidar.com/Public/upload/files/2022-06-21/YDLIDAR%20TG30%20Data%20Sheet%20V1.4(211230).pdf -->
   <gazebo reference="front_lrf_link">
     <material>${lrf_color}</material>
     <selfCollide>true</selfCollide>

@@ -9,8 +9,7 @@
   <xacro:property name="DEG_TO_RAD" value="0.01745329251994329577" />
   <xacro:property name="LRF_ANGLE" value="172" />
 
-  <!-- LRF: TG30 -->
-  <!-- DATA: http://www.ydlidar.com/Public/upload/files/2022-06-21/YDLIDAR%20TG30%20Data%20Sheet%20V1.4(211230).pdf -->
+  <!-- LRF TG30 -->
   <gazebo reference="front_lrf_link">
     <material>${lrf_color}</material>
     <selfCollide>true</selfCollide>
