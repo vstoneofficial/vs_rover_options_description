@@ -22,13 +22,13 @@
   <xacro:property name="bumper_alu_frame_z_offset" value="0.03" />
 
   <joint name="bumper_aluminum_frame_fixed_joint_1" type="fixed">
-    <origin xyz="${bumper_alu_frame_x_offset} 0.0 ${bumper_alu_frame_z_offset}" rpy="0 0 0" />
+    <origin xyz="0.0 ${-bumper_alu_frame_x_offset} ${bumper_alu_frame_z_offset}" rpy="0 0 -1.5708" />
     <parent link="base_link" />
     <child link="bumper_aluminum_frame_1" />
   </joint>
 
   <joint name="bumper_aluminum_frame_fixed_joint_2" type="fixed">
-    <origin xyz="${-bumper_alu_frame_x_offset} 0.0 ${bumper_alu_frame_z_offset}" rpy="0 0 0" />
+    <origin xyz="0.0 ${bumper_alu_frame_x_offset} ${bumper_alu_frame_z_offset}" rpy="0 0 -1.5708" />
     <parent link="base_link" />
     <child link="bumper_aluminum_frame_2" />
   </joint>

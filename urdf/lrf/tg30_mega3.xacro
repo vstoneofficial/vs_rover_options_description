@@ -2,11 +2,11 @@
   <xacro:include filename="$(find vs_rover_options_description)/urdf/lrf/tg30_mega3.gazebo" />
 
 
-  <xacro:property name="tg30_lrf_front_x_offset" value="0.0" />
-  <xacro:property name="tg30_lrf_front_y_offset" value="0.1990" />
+  <xacro:property name="tg30_lrf_front_x_offset" value="0.1990" />
+  <xacro:property name="tg30_lrf_front_y_offset" value="0.0" />
   <xacro:property name="tg30_lrf_front_z_offset" value="0.1809" />
-  <xacro:property name="tg30_lrf_back_x_offset" value="0.0" />
-  <xacro:property name="tg30_lrf_back_y_offset" value="-0.1690" />
+  <xacro:property name="tg30_lrf_back_x_offset" value="-0.1690" />
+  <xacro:property name="tg30_lrf_back_y_offset" value="0.0" />
   <xacro:property name="tg30_lrf_back_z_offset" value="0.1809" />
   <xacro:property name="tg30_center_of_mass_x" value="-0.004299" />
   <xacro:property name="tg30_center_of_mass_y" value="-0.000337" />
@@ -16,7 +16,7 @@
   <joint name="front_lrf_joint" type="fixed">
     <parent link="base_link" />
     <child link="front_lrf_link" />
-    <origin xyz="${tg30_lrf_front_x_offset} ${tg30_lrf_front_y_offset} ${tg30_lrf_front_z_offset}" rpy="0 0 ${pi/2}" />
+    <origin xyz="${tg30_lrf_front_x_offset} ${tg30_lrf_front_y_offset} ${tg30_lrf_front_z_offset}" rpy="0 0 0" />
   </joint>
 
   <link name="front_lrf_link">
@@ -45,7 +45,7 @@
   <joint name="back_lrf_joint" type="fixed">
     <parent link="base_link" />
     <child link="back_lrf_link" />
-    <origin xyz="${tg30_lrf_back_x_offset} ${tg30_lrf_back_y_offset} ${tg30_lrf_back_z_offset}" rpy="0 0 ${-pi/2}" />
+    <origin xyz="${tg30_lrf_back_x_offset} ${tg30_lrf_back_y_offset} ${tg30_lrf_back_z_offset}" rpy="0 0 ${-pi}" />
   </joint>
 
   <link name="back_lrf_link">
