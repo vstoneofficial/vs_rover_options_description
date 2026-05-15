@@ -13,6 +13,7 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
 
     <!-- Load parameters to model's main link-->
     <xacro:property name="deg_to_rad" value="0.01745329251994329577" />
+
     <gazebo reference="${reference_link}">
       <self_collide>0</self_collide>
       <enable_wind>0</enable_wind>
@@ -27,12 +28,33 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
       <kd>1</kd>
       <!--<max_vel>0.01</max_vel>
       <min_depth>0</min_depth>-->
+      <sensor name="${camera_name}depth" type="depth">
+        <camera name="${camera_name}">
+          <horizontal_fov>1.57</horizontal_fov>
+          <image>
+            <width>1280</width>
+            <height>720</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.100</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>30</update_rate>
+        <visualize>0</visualize>
+      </sensor>
       <sensor name="${camera_name}color" type="camera">
         <camera name="${camera_name}">
-          <horizontal_fov>${69.4*deg_to_rad}</horizontal_fov>
+          <horizontal_fov>1.57</horizontal_fov>
           <image>
-            <width>640</width>
-            <height>480</height>
+            <width>1280</width>
+            <height>720</height>
             <format>RGB_INT8</format>
           </image>
           <clip>
@@ -51,7 +73,7 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
       </sensor>
       <sensor name="${camera_name}ired1" type="camera">
         <camera name="${camera_name}">
-          <horizontal_fov>${85.2*deg_to_rad}</horizontal_fov>
+          <horizontal_fov>1.57</horizontal_fov>
           <image>
             <width>1280</width>
             <height>720</height>
@@ -68,12 +90,12 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
           </noise>
         </camera>
         <always_on>1</always_on>
-        <update_rate>90</update_rate>
+        <update_rate>1</update_rate>
         <visualize>0</visualize>
       </sensor>
       <sensor name="${camera_name}ired2" type="camera">
         <camera name="${camera_name}">
-          <horizontal_fov>${85.2*deg_to_rad}</horizontal_fov>
+          <horizontal_fov>1.57</horizontal_fov>
           <image>
             <width>1280</width>
             <height>720</height>
@@ -90,28 +112,7 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
           </noise>
         </camera>
         <always_on>1</always_on>
-        <update_rate>90</update_rate>
-        <visualize>0</visualize>
-      </sensor>
-      <sensor name="${camera_name}depth" type="depth">
-        <camera name="${camera_name}">
-          <horizontal_fov>${85.2*deg_to_rad}</horizontal_fov>
-          <image>
-            <width>1280</width>
-            <height>720</height>
-          </image>
-          <clip>
-            <near>0.1</near>
-            <far>100</far>
-          </clip>
-          <noise>
-            <type>gaussian</type>
-            <mean>0.0</mean>
-            <stddev>0.100</stddev>
-          </noise>
-        </camera>
-        <always_on>1</always_on>
-        <update_rate>90</update_rate>
+        <update_rate>1</update_rate>
         <visualize>0</visualize>
       </sensor>
     </gazebo>
@@ -121,7 +122,7 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
         <prefix>${camera_name}</prefix>
         <depthUpdateRate>30.0</depthUpdateRate>
         <colorUpdateRate>30.0</colorUpdateRate>
-        <infraredUpdateRate>30.0</infraredUpdateRate>
+        <infraredUpdateRate>1.0</infraredUpdateRate>
         <depthTopicName>depth/image_raw</depthTopicName>
         <depthCameraInfoTopicName>depth/camera_info</depthCameraInfoTopicName>
         <colorTopicName>color/image_raw</colorTopicName>
@@ -134,12 +135,11 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
         <depthOpticalframeName>${depth_optical_frame}</depthOpticalframeName>
         <infrared1OpticalframeName>${infrared1_optical_frame}</infrared1OpticalframeName>
         <infrared2OpticalframeName>${infrared2_optical_frame}</infrared2OpticalframeName>
-        <rangeMinDepth>0.2</rangeMinDepth>
-        <rangeMaxDepth>10.0</rangeMaxDepth>
-        <pointCloud>${publish_pointcloud}</pointCloud>
+        <rangeMinDepth>0.3</rangeMinDepth>
+        <rangeMaxDepth>3.0</rangeMaxDepth>
+        <pointCloud>true</pointCloud>
         <pointCloudTopicName>depth/color/points</pointCloudTopicName>
-        <pointCloudCutoff>0.25</pointCloudCutoff>
-        <pointCloudCutoffMax>9.0</pointCloudCutoffMax>
+        <pointCloudCutoff>0.3</pointCloudCutoff>
       </plugin>
     </gazebo>
 
