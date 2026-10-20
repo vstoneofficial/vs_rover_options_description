@@ -88,11 +88,8 @@ Intel RealSense 435i camera.
               </z>
             </linear_acceleration>
           </imu>
-          <plugin name="d435i_imu" filename="libgazebo_ros_imu_sensor.so">
-            <ros>
-              <remapping>~/out:=imu</remapping>
-            </ros>
-          </plugin>
+          <topic>/imu</topic>
+          <gz_frame_id>${name}_gyro_frame</gz_frame_id>
         </sensor>
       </gazebo>
 
