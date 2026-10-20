@@ -29,7 +29,7 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
       <!--<max_vel>0.01</max_vel>
       <min_depth>0</min_depth>-->
       <xacro:if value="${publish_pointcloud}">
-<sensor name="${camera_name}depth" type="rgbd_camera">
+        <sensor name="${camera_name}depth" type="rgbd_camera">
         <topic>/${topics_ns}/depth</topic>
         <gz_frame_id>${depth_optical_frame}</gz_frame_id>
         <camera name="${camera_name}">
@@ -60,8 +60,8 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
       </sensor>
       </xacro:if>
       <xacro:unless value="${publish_pointcloud}">
-<sensor name="${camera_name}depth" type="depth_camera">
-        <topic>/${topics_ns}/depth</topic>
+        <sensor name="${camera_name}depth" type="depth_camera">
+        <topic>/${topics_ns}/depth/image_raw</topic>
         <gz_frame_id>${depth_optical_frame}</gz_frame_id>
         <camera name="${camera_name}">
           <camera_info_topic>/${topics_ns}/depth/camera_info</camera_info_topic>
