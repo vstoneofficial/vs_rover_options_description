@@ -31,7 +31,8 @@ This is the Gazebo URDF model for the Intel RealSense D435 camera
       <xacro:if value="${publish_pointcloud}">
         <sensor name="${camera_name}depth" type="rgbd_camera">
         <topic>/${topics_ns}/depth</topic>
-        <gz_frame_id>${depth_optical_frame}</gz_frame_id>
+        <!-- Native RGBD XYZ uses the carrier's forward-X axes; images use optical axes. -->
+        <gz_frame_id>${reference_link}</gz_frame_id>
         <camera name="${camera_name}">
           <camera_info_topic>/${topics_ns}/depth/camera_info</camera_info_topic>
           <optical_frame_id>${depth_optical_frame}</optical_frame_id>

@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bumper_mecanum3">
+  <!-- Mecanum3 frame and mounting geometry from 8900_description. -->
+  <!-- Frame joints follow the existing base mesh yaw (-1.5708 rad). -->
+  <material name="mecanum3_bumper_frame_material">
+    <color rgba="0.623529 0.623529 0.623529 1.000000" />
+  </material>
+  <xacro:macro name="mecanum3_bumper_frame_178" params="name xyz">
+    <link name="${name}">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.55892" />
+        <inertia ixx="0.001494365773333334" iyy="3.7261333333333396e-05" izz="0.001494365773333334" ixy="-4.336808689942018e-19" iyz="-4.336808689942018e-19" ixz="0.0" />
+      </inertial>
+      <visual>
+        <origin xyz="-0.045 0.129 -0.045" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://vs_rover_options_description/meshes/bumper/mecanum3_bumper_frame_178.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="mecanum3_bumper_frame_material" />
+      </visual>
+      <collision>
+        <origin xyz="-0.045 0.129 -0.045" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://vs_rover_options_description/meshes/bumper/mecanum3_bumper_frame_178.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${name}_mount_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="0 0 -1.5708" />
+      <parent link="base_link" />
+      <child link="${name}" />
+    </joint>
+  </xacro:macro>
+  <xacro:macro name="mecanum3_bumper_frame_396" params="name xyz">
+    <link name="${name}">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="1.2434399999999999" />
+        <inertia ixx="8.28960000000007e-05" iyy="0.016290721919999994" izz="0.016290721919999994" ixy="-3.569766704458743e-19" iyz="6.505213034913027e-19" ixz="-3.569766704458743e-19" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0.03 -0.045" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://vs_rover_options_description/meshes/bumper/mecanum3_bumper_frame_396.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="mecanum3_bumper_frame_material" />
+      </visual>
+      <collision>
+        <origin xyz="0 0.03 -0.045" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://vs_rover_options_description/meshes/bumper/mecanum3_bumper_frame_396.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${name}_mount_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="0 0 -1.5708" />
+      <parent link="base_link" />
+      <child link="${name}" />
+    </joint>
+  </xacro:macro>
+  <xacro:macro name="mecanum3_bumper_mount" params="prefix parent xyz yaw">
+    <xacro:property name="bumper40_prefix" value="${prefix}_" />
+    <xacro:property name="bumper40_parent" value="${parent}" />
+    <xacro:property name="bumper40_xyz" value="${xyz}" />
+    <xacro:property name="bumper40_rpy" value="0 0 ${yaw}" />
+    <xacro:include filename="$(find vs_rover_options_description)/urdf/bumper/40bumper.xacro" />
+  </xacro:macro>
+  <xacro:mecanum3_bumper_frame_178 name="back_right_bumper_frame" xyz="-0.129000165293359 -0.0449995261562381 0.045" />
+  <xacro:mecanum3_bumper_frame_178 name="back_left_bumper_frame" xyz="-0.1289998347049 0.0450004738431547 0.045" />
+  <xacro:mecanum3_bumper_frame_178 name="front_right_bumper_frame" xyz="0.1289998347049 -0.0450004738431547 0.045" />
+  <xacro:mecanum3_bumper_frame_178 name="front_left_bumper_frame" xyz="0.129000165293359 0.0449995261562381 0.045" />
+  <xacro:mecanum3_bumper_frame_396 name="back_bumper_cross_frame" xyz="-0.0299999999997976 1.10196153100397e-07 0.045" />
+  <xacro:mecanum3_bumper_frame_396 name="front_bumper_cross_frame" xyz="0.0299999999997976 -1.10196153100397e-07 0.045" />
+  <xacro:mecanum3_bumper_mount prefix="back" parent="back_left_bumper_frame" xyz="0.0449999999999997 -0.081 -0.00999999999999999" yaw="3.14159265358979" />
+  <xacro:mecanum3_bumper_mount prefix="left" parent="front_bumper_cross_frame" xyz="-0.19 -0.0300000000000001 -0.00999999999999998" yaw="1.5707963267949" />
+  <xacro:mecanum3_bumper_mount prefix="front" parent="front_right_bumper_frame" xyz="-0.0449999999999999 0.081 -0.00999999999999998" yaw="0" />
+  <xacro:mecanum3_bumper_mount prefix="right" parent="back_bumper_cross_frame" xyz="0.19 0.03 -0.00999999999999997" yaw="-1.5707963267949" />
+</robot>

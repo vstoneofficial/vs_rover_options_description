@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bumper_x120a_lb">
+  <!-- X120A-LB frames and mounting positions from 23300_description. Supplied base_link coordinates are preserved. -->
+  <material name="x120a_lb_bumper_frame_material">
+    <color rgba="0.956863 0.960784 0.964706 1.000000" />
+  </material>
+  <link name="front_bumper_frame">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.2459104024159909" />
+      <inertia ixx="0.0007307034327222945" iyy="0.0002626784377841949" izz="0.0009923572438297543" ixy="-6.557270382172824e-16" iyz="1.5234036254714544e-20" ixz="0.0" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.22151860798913392 2.3478875573400887e-14 -0.032500000000000001" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/x120a_lb_bumper_frame_front.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="x120a_lb_bumper_frame_material" />
+    </visual>
+    <collision>
+      <origin xyz="-0.22151860798913392 2.3478875573400887e-14 -0.032500000000000001" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/x120a_lb_bumper_frame_front.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="front_bumper_frame_mount_joint" type="fixed">
+    <origin xyz="0.22151860798913392 -2.3478875573400887e-14 0.032500000000000001" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="front_bumper_frame" />
+  </joint>
+  <link name="back_bumper_frame">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.245910402415991" />
+      <inertia ixx="0.0007307034327222925" iyy="0.0002626784377841966" izz="0.000992357243829756" ixy="-6.52689484778008e-16" iyz="-1.5234036254714544e-20" ixz="2.168404344971009e-19" />
+    </inertial>
+    <visual>
+      <origin xyz="0.22151860798913386 -2.3503655389309485e-14 -0.032499999999999994" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/x120a_lb_bumper_frame_back.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="x120a_lb_bumper_frame_material" />
+    </visual>
+    <collision>
+      <origin xyz="0.22151860798913386 -2.3503655389309485e-14 -0.032499999999999994" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/x120a_lb_bumper_frame_back.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="back_bumper_frame_mount_joint" type="fixed">
+    <origin xyz="-0.22151860798913386 2.3503655389309485e-14 0.032499999999999994" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="back_bumper_frame" />
+  </joint>
+  <link name="left_bumper_frame">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.3584704024160127" />
+      <inertia ixx="0.0007449868919467105" iyy="0.0010111383959146" izz="0.0017546316611845754" ixy="5.474446626956763e-16" iyz="0.0" ixz="1.2187229003756844e-19" />
+    </inertial>
+    <visual>
+      <origin xyz="-1.4398096602411822e-14 -0.19749595097672315 -0.032500000000000001" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/x120a_lb_bumper_frame_left.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="x120a_lb_bumper_frame_material" />
+    </visual>
+    <collision>
+      <origin xyz="-1.4398096602411822e-14 -0.19749595097672315 -0.032500000000000001" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/x120a_lb_bumper_frame_left.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="left_bumper_frame_mount_joint" type="fixed">
+    <origin xyz="1.4398096602411822e-14 0.19749595097672315 0.032500000000000001" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="left_bumper_frame" />
+  </joint>
+  <link name="right_bumper_frame">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="0.3584704024160125" />
+      <inertia ixx="0.0007449868919467105" iyy="0.0010111383959145988" izz="0.0017546316611845737" ixy="5.444586928970082e-16" iyz="-4.336808689942018e-19" ixz="4.5702108764045026e-20" />
+    </inertial>
+    <visual>
+      <origin xyz="1.4466092336071391e-14 0.19749595097672315 -0.032500000000000001" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/x120a_lb_bumper_frame_right.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="x120a_lb_bumper_frame_material" />
+    </visual>
+    <collision>
+      <origin xyz="1.4466092336071391e-14 0.19749595097672315 -0.032500000000000001" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/x120a_lb_bumper_frame_right.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="right_bumper_frame_mount_joint" type="fixed">
+    <origin xyz="-1.4466092336071391e-14 -0.19749595097672315 0.032500000000000001" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="right_bumper_frame" />
+  </joint>
+  <!-- Each frame carries one reusable 120 mm bumper with three passive spring sliders. -->
+  <xacro:macro name="x120a_lb_bumper_mount" params="prefix parent xyz rpy">
+    <xacro:property name="bumper120_prefix" value="${prefix}_" />
+    <xacro:property name="bumper120_parent" value="${parent}" />
+    <xacro:property name="bumper120_xyz" value="${xyz}" />
+    <xacro:property name="bumper120_rpy" value="${rpy}" />
+    <xacro:include filename="$(find vs_rover_options_description)/urdf/bumper/120bumper.xacro" />
+  </xacro:macro>
+  <xacro:x120a_lb_bumper_mount prefix="front" parent="front_bumper_frame" xyz="0.073481392010866009 2.3286461894299146e-14 0.0075000000000000136" rpy="0 0 -1.5707963267948966" />
+  <xacro:x120a_lb_bumper_mount prefix="back" parent="back_bumper_frame" xyz="-0.07348139201086612 -2.3396668192126503e-14 0.0074999999999999997" rpy="0 0 1.5707963267948966" />
+  <xacro:x120a_lb_bumper_mount prefix="left" parent="left_bumper_frame" xyz="-1.4347434622073566e-14 0.097504049023276723 0.0074999999999999928" rpy="0 0 0" />
+  <xacro:x120a_lb_bumper_mount prefix="right" parent="right_bumper_frame" xyz="1.4224310990091195e-14 -0.097504049023276834 0.0074999999999999928" rpy="0 0 3.1415926535897931" />
+</robot>

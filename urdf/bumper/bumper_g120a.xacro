@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bumper_g120a">
+  <!-- G120A mounts from 7600_description, aligned with the existing base mesh. -->
+  <material name="g120a_bumper_frame_165_material">
+    <color rgba="0.956863 0.960784 0.964706 1.000000" />
+  </material>
+  <xacro:macro name="g120a_bumper_frame_165" params="name xyz">
+    <link name="${name}">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.17688000000001694" />
+        <inertia ixx="0.0004071925000000403" iyy="1.1792000000002004e-05" izz="0.00040719250000004203" ixy="-4.336808689942018e-19" iyz="2.168404344971009e-19" ixz="0.0" />
+      </inertial>
+      <visual>
+        <origin xyz="0.0759999999999982 -0.2275 0.010000000000003" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://vs_rover_options_description/meshes/bumper/g120a_bumper_frame_165.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="g120a_bumper_frame_165_material" />
+      </visual>
+      <collision>
+        <origin xyz="0.0759999999999982 -0.2275 0.010000000000003" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://vs_rover_options_description/meshes/bumper/g120a_bumper_frame_165.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${name}_mount_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="${name}" />
+      <origin xyz="${xyz}" rpy="0 0 -1.5708" />
+    </joint>
+  </xacro:macro>
+  <material name="g120a_bumper_frame_620_material">
+    <color rgba="0.956863 0.960784 0.964706 1.000000" />
+  </material>
+  <xacro:macro name="g120a_bumper_frame_620" params="name xyz">
+    <link name="${name}">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="1.3292800000002618" />
+        <inertia ixx="0.00022154666666675434" iyy="0.042625578666675094" izz="0.04275850666667513" ixy="-1.0237272363157253e-17" iyz="-2.168404344971009e-19" ixz="9.749783203000638e-19" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0.0900000000000022 0.010000000000001" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://vs_rover_options_description/meshes/bumper/g120a_bumper_frame_620.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="g120a_bumper_frame_620_material" />
+      </visual>
+      <collision>
+        <origin xyz="0 0.0900000000000022 0.010000000000001" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://vs_rover_options_description/meshes/bumper/g120a_bumper_frame_620.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${name}_mount_joint" type="fixed">
+      <parent link="base_link" />
+      <child link="${name}" />
+      <origin xyz="${xyz}" rpy="0 0 -1.5708" />
+    </joint>
+  </xacro:macro>
+  <xacro:macro name="g120a_bumper_mount" params="prefix parent xyz yaw">
+    <xacro:property name="bumper120_prefix" value="${prefix}_" />
+    <xacro:property name="bumper120_parent" value="${parent}" />
+    <xacro:property name="bumper120_xyz" value="${xyz}" />
+    <xacro:property name="bumper120_rpy" value="0 0 ${yaw}" />
+    <xacro:include filename="$(find vs_rover_options_description)/urdf/bumper/120bumper.xacro" />
+  </xacro:macro>
+  <xacro:g120a_bumper_frame_165 name="back_left_bumper_frame" xyz="-0.227499706142057 0.0800008356536194 -0.010000000000003" />
+  <xacro:g120a_bumper_frame_165 name="back_right_bumper_frame" xyz="-0.227500293854874 -0.0799991643453015 -0.010000000000003" />
+  <xacro:g120a_bumper_frame_165 name="front_left_bumper_frame" xyz="0.227500279162053 0.0759991643453245 -0.010000000000003" />
+  <xacro:g120a_bumper_frame_165 name="front_right_bumper_frame" xyz="0.227499691449237 -0.0840008356535964 -0.010000000000003" />
+  <xacro:g120a_bumper_frame_620 name="back_bumper_cross_frame" xyz="-0.089999999999395 3.30588458897795e-07 -0.010000000000001" />
+  <xacro:g120a_bumper_frame_620 name="front_bumper_cross_frame" xyz="0.0899999999993949 -3.30588458897794e-07 -0.010000000000001" />
+  <xacro:g120a_bumper_mount prefix="front" parent="front_right_bumper_frame" xyz="-0.0840000000000021 0.0819999999999993 -0.010000000000247" yaw="0" />
+  <xacro:g120a_bumper_mount prefix="back" parent="back_left_bumper_frame" xyz="0.0799999999999983 -0.0819999999999997 -0.010000000000247" yaw="3.14159265358979" />
+  <xacro:g120a_bumper_mount prefix="left" parent="front_bumper_cross_frame" xyz="-0.3095 -0.0860000000000024 -0.00999999999977904" yaw="1.5707963267949" />
+  <xacro:g120a_bumper_mount prefix="right" parent="back_bumper_cross_frame" xyz="0.3095 0.0899999999973261 -0.0100000000001266" yaw="-1.5707963267949" />
+</robot>

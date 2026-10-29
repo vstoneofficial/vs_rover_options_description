@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<robot name="40バンパー" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- A direct include keeps the default names and zero mounting transform.
+       A product mounting macro may set these properties in its local scope. -->
+  <xacro:property name="bumper40_prefix" default="" />
+  <xacro:property name="bumper40_parent" default="base_link" />
+  <xacro:property name="bumper40_xyz" default="0.0 0.0 0.0" />
+  <xacro:property name="bumper40_rpy" default="0.0 0.0 0.0" />
+  <material name="${bumper40_prefix}material_bumper_link_Center">
+    <color rgba="0.956863 0.960784 0.964706 1.000000" />
+  </material>
+  <material name="${bumper40_prefix}material_bumper_link_left">
+    <color rgba="0.956863 0.960784 0.964706 1.000000" />
+  </material>
+  <material name="${bumper40_prefix}material_bumper_link_right">
+    <color rgba="0.956863 0.960784 0.964706 1.000000" />
+  </material>
+  <material name="${bumper40_prefix}material_bumper_plate">
+    <color rgba="0.956863 0.960784 0.964706 1.000000" />
+  </material>
+  <link name="${bumper40_prefix}bumper_plate">
+    <inertial>
+      <origin xyz="3.1732607477805068e-15 0.01777151881218175 0.0023834706621596257" rpy="0 0 0" />
+      <mass value="0.14546277006708608" />
+      <inertia ixx="3.2721042927587545e-05" iyy="0.0007233569211728999" izz="0.0007495142106063612" ixy="-6.312257929934954e-17" iyz="-1.6274854059720834e-06" ixz="6.393597212195928e-19" />
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/40_bumper_plate.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="${bumper40_prefix}material_bumper_plate" />
+    </visual>
+    <collision>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/40_bumper_plate.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="${bumper40_prefix}bumper_link_right">
+    <inertial>
+      <origin xyz="0.045770852181854206 -0.024776479714405882 -0.010500000000000011" rpy="0 0 0" />
+      <mass value="0.01730098446880689" />
+      <inertia ixx="4.142384817977016e-06" iyy="1.3008176497925278e-05" izz="1.4881946334594653e-05" ixy="5.6738479367585595e-06" iyz="-6.1409888675936775e-21" ixz="-2.541098841762901e-20" />
+    </inertial>
+    <visual>
+      <origin xyz="0.024818517889946122 -0.067735131203158397 -0.013750000000000026" rpy="0 0 -0.4537856055185257" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/40_bumper_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="${bumper40_prefix}material_bumper_link_right" />
+    </visual>
+    <collision>
+      <origin xyz="0.024818517889946122 -0.067735131203158397 -0.013750000000000026" rpy="0 0 -0.4537856055185257" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/40_bumper_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="${bumper40_prefix}bumper_link_Center">
+    <inertial>
+      <origin xyz="-0.05199999999999989 -0.00018912099341653749 -0.010499999999999985" rpy="0 0 0" />
+      <mass value="0.01730098446880679" />
+      <inertia ixx="1.3750642766526238e-06" iyy="1.5775497039247394e-05" izz="1.4881946334592315e-05" ixy="2.4366610587125352e-20" iyz="8.470329472543003e-22" ixz="1.9518608951329977e-20" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.052 -0.047985 -0.01375" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/40_bumper_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="${bumper40_prefix}material_bumper_link_Center" />
+    </visual>
+    <collision>
+      <origin xyz="-0.052 -0.047985 -0.01375" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/40_bumper_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="${bumper40_prefix}bumper_link_left">
+    <inertial>
+      <origin xyz="-0.04665485218185397 -0.022965479714405546 -0.009000000000000006" rpy="0 0 0" />
+      <mass value="0.017300984468806884" />
+      <inertia ixx="4.142384817976052e-06" iyy="1.3008176497921267e-05" izz="1.4881946334589612e-05" ixy="-5.673847936756567e-06" iyz="1.4823076576950256e-21" ixz="5.929230630780102e-21" />
+    </inertial>
+    <visual>
+      <origin xyz="-0.025702517889946097 -0.065924131203158154 -0.012250000000000021" rpy="0 0 0.4537856055185257" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/40_bumper_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material name="${bumper40_prefix}material_bumper_link_left" />
+    </visual>
+    <collision>
+      <origin xyz="-0.025702517889946097 -0.065924131203158154 -0.012250000000000021" rpy="0 0 0.4537856055185257" />
+      <geometry>
+        <mesh filename="package://vs_rover_options_description/meshes/bumper/40_bumper_link.stl" scale="0.001 0.001 0.001" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="${bumper40_prefix}bumper_mount_joint" type="fixed">
+    <origin xyz="${bumper40_xyz}" rpy="${bumper40_rpy}" />
+    <parent link="${bumper40_parent}" />
+    <child link="${bumper40_prefix}bumper_plate" />
+  </joint>
+  <joint name="${bumper40_prefix}bumper_right_joint" type="prismatic">
+    <origin xyz="0.058472 0.048506 0.01375" rpy="0.0 0.0 0.0" />
+    <parent link="${bumper40_prefix}bumper_plate" />
+    <child link="${bumper40_prefix}bumper_link_right" />
+    <axis xyz="0.438371 0.898794 -0.0" />
+    <limit effort="100.0" velocity="100.0" upper="0.0" lower="-0.002" />
+  </joint>
+  <joint name="${bumper40_prefix}bumper_center_joint" type="prismatic">
+    <origin xyz="0.052 0.047985 0.01375" rpy="0.0 0.0 0.0" />
+    <parent link="${bumper40_prefix}bumper_plate" />
+    <child link="${bumper40_prefix}bumper_link_Center" />
+    <axis xyz="-0.0 1.0 0.0" />
+    <limit effort="100.0" velocity="100.0" upper="0.0" lower="-0.002" />
+  </joint>
+  <joint name="${bumper40_prefix}bumper_left_joint" type="prismatic">
+    <origin xyz="-0.057588 0.046695 0.01225" rpy="0.0 0.0 0.0" />
+    <parent link="${bumper40_prefix}bumper_plate" />
+    <child link="${bumper40_prefix}bumper_link_left" />
+    <axis xyz="-0.438371 0.898794 0.0" />
+    <limit effort="100.0" velocity="100.0" upper="0.0" lower="-0.002" />
+  </joint>
+  <!-- Each slider has two parallel MISUMI WT8-15 springs (2 N/mm each).
+       Free length: 15 mm; installed length at q=0: 10 mm; preload: 20 N total.
+       Equivalent stiffness: 4000 N/m; the unloaded reference is q=+0.005 m.
+       Negative q compresses the springs further. Existing travel remains -0.002 to 0 m.
+       At q=-0.002 m, each spring is compressed 7 mm and carries 14 N (calculated),
+       exceeding the supplied 40% deflection (6 mm) and 11.8 N load ratings.
+       No unprovided damping, friction, mass, or coil geometry is assumed. -->
+  <gazebo reference="${bumper40_prefix}bumper_right_joint">
+    <springReference>0.005</springReference>
+    <springStiffness>4000.0</springStiffness>
+  </gazebo>
+  <gazebo reference="${bumper40_prefix}bumper_center_joint">
+    <springReference>0.005</springReference>
+    <springStiffness>4000.0</springStiffness>
+  </gazebo>
+  <gazebo reference="${bumper40_prefix}bumper_left_joint">
+    <springReference>0.005</springReference>
+    <springStiffness>4000.0</springStiffness>
+  </gazebo>
+</robot>

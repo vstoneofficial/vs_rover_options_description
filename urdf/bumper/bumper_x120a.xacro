@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="bumper_x120a">
+  <!-- X120A mounts from 7200_description. Source base_link coordinates are preserved. -->
+  <material name="x120a_bumper_frame_material">
+    <color rgba="0.623529 0.623529 0.623529 1.000000" />
+  </material>
+  <xacro:macro name="x120a_bumper_mount" params="prefix xyz yaw">
+    <link name="${prefix}_bumper_frame">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.867705788048181" />
+        <inertia ixx="0.0016431465355644242" iyy="0.0018028790688625757" izz="0.0034424101636434737" ixy="-1.9816509225619087e-17" iyz="4.4622083805731216e-20" ixz="2.168404344971009e-19" />
+      </inertial>
+      <visual>
+        <origin xyz="-0.197527640079576 0 -0.0075" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://vs_rover_options_description/meshes/bumper/x120a_bumper_frame.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+        <material name="x120a_bumper_frame_material" />
+      </visual>
+      <collision>
+        <origin xyz="-0.197527640079576 0 -0.0075" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://vs_rover_options_description/meshes/bumper/x120a_bumper_frame.stl" scale="0.001 0.001 0.001" />
+        </geometry>
+      </collision>
+    </link>
+    <joint name="${prefix}_bumper_frame_mount_joint" type="fixed">
+      <origin xyz="${xyz}" rpy="0 0 ${yaw}" />
+      <parent link="base_link" />
+      <child link="${prefix}_bumper_frame" />
+    </joint>
+    <xacro:property name="bumper120_prefix" value="${prefix}_" />
+    <xacro:property name="bumper120_parent" value="${prefix}_bumper_frame" />
+    <xacro:property name="bumper120_xyz" value="0.077472359920424 0 0.0075" />
+    <xacro:property name="bumper120_rpy" value="0 0 -1.5707963267949" />
+    <xacro:include filename="$(find vs_rover_options_description)/urdf/bumper/120bumper.xacro" />
+  </xacro:macro>
+  <xacro:x120a_bumper_mount prefix="front" xyz="0.197527640079576 0 0.0075" yaw="0" />
+  <xacro:x120a_bumper_mount prefix="back" xyz="-0.197527640079576 0 0.0075" yaw="3.14159265358979" />
+  <xacro:x120a_bumper_mount prefix="left" xyz="0 0.197527640079576 0.0075" yaw="1.5707963267949" />
+  <xacro:x120a_bumper_mount prefix="right" xyz="0 -0.197527640079576 0.0075" yaw="-1.5707963267949" />
+</robot>

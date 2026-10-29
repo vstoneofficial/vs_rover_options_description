@@ -33,99 +33,19 @@
     <child link="bumper_aluminum_frame_2" />
   </joint>
 
-  <xacro:macro name="bumper" params="prefix num xyz z_dir">
-
-    <joint name="bumper_${prefix}_${num}_joint" type="prismatic">
-      <parent link="bumper_baseboard_${prefix}_link" />
-      <child link="bumper_${prefix}_${num}_link" />
-      <origin xyz="${xyz}" rpy="0 0 ${radians(z_dir)}" />
-      <limit lower="0.0" upper="0.0023" effort="1" velocity="1.0" />
-      <axis xyz="0 1 0" />
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <dynamics damping="0.01" />
-    </joint>
-
-    <transmission name="bumper_${prefix}_${num}_trans">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="bumper_${prefix}_${num}_joint">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="bumper_${prefix}_${num}_motor">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <mechanismReduction>1</mechanismReduction>
-      </actuator>
-    </transmission>
-
-    <link name="bumper_${prefix}_${num}_link">
-      <inertial>
-        <origin xyz="0 0 0" rpy="0 0 ${-radians(26)}" />
-        <mass value="0.01615" />
-        <inertia ixx="0.0000038736" iyy="0.000012239" izz="0.000014018"
-          ixy="-0.000005354147" iyz="0.000"
-          ixz="-0.000" />
-      </inertial>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 ${-pi}" />
-        <geometry>
-          <mesh filename="package://vs_rover_options_description/meshes/bumper/mega3_bumper_link.stl" scale="0.001 0.001 0.001" />
-        </geometry>
-        <material name="silver" />
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 ${-pi}" />
-        <geometry>
-          <mesh filename="package://vs_rover_options_description/meshes/bumper/mega3_bumper_link.stl" scale="0.001 0.001 0.001" />
-        </geometry>
-      </collision>
-    </link>
-
-    <gazebo reference="bumper_${prefix}_${num}_link">
-      <material>Gazebo/Silver</material>
-      <kp value="10000" />
-      <kd value="100" />
-    </gazebo>
-
-  </xacro:macro>
-
+  <!-- Mega3 mounting of the reusable, passive spring-loaded 40 mm bumper. -->
   <xacro:macro name="bumperbaseboard" params="prefix parent xyz z_dir">
-
-    <joint name="bumper_baseboard_${prefix}_joint" type="fixed">
-      <parent link="${parent}" />
-      <child link="bumper_baseboard_${prefix}_link" />
-      <origin xyz="${xyz}" rpy="0 0 ${radians(z_dir)}" />
-    </joint>
-
-    <link name="bumper_baseboard_${prefix}_link">
-      <inertial>
-        <origin xyz="0 -0.018894 0.002872" rpy="0 0 0" />
-        <mass value="0.25" />
-        <inertia ixx="0.000056834" iyy="0.001431" izz="0.00148"
-          ixy="0.0" iyz="-0.000001652"
-          ixz="-0.000" />
-      </inertial>
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 ${-pi}" />
-        <geometry>
-          <mesh filename="package://vs_rover_options_description/meshes/bumper/mega3_bumper_plate.stl" scale="0.001 0.001 0.001" />
-        </geometry>
-        <material name="dark_silver" />
-      </visual>
-      <collision>
-        <origin xyz="0 0 0" rpy="0 0 ${-pi}" />
-        <geometry>
-          <mesh filename="package://vs_rover_options_description/meshes/bumper/mega3_bumper_plate.stl" scale="0.001 0.001 0.001" />
-        </geometry>
-      </collision>
-    </link>
-
-    <gazebo reference="bumper_baseboard_${prefix}_link">
-      <material>Gazebo/DarkGray</material>
-    </gazebo>
-
-    <xacro:bumper prefix="${prefix}" num="0" xyz="0.10521 -0.024711 0.0025" z_dir="26" />
-    <xacro:bumper prefix="${prefix}" num="1" xyz="0 -0.049 0.0025" z_dir="0" />
-    <xacro:bumper prefix="${prefix}" num="2" xyz="-0.10521 -0.024711 0.0025" z_dir="-26" />
-
+    <xacro:property name="bumper40_prefix" value="${prefix}_" />
+    <xacro:property name="bumper40_parent" value="${parent}" />
+    <xacro:property name="bumper40_xyz" value="${xyz}" />
+    <!-- The former mesh used a -pi rotation; the common model faces local +Y. -->
+    <xacro:property name="bumper40_rpy" value="0 0 ${radians(z_dir) - pi}" />
+    <xacro:include filename="$(find vs_rover_options_description)/urdf/bumper/40bumper.xacro" />
   </xacro:macro>
+
+
+  <!-- Complete product layout: including this file places all bumper assemblies. -->
+  <xacro:bumperbaseboard prefix="front" parent="base_link" xyz="0.19 0 0.02" z_dir="90" />
+  <xacro:bumperbaseboard prefix="back" parent="base_link" xyz="-0.19 0 0.02" z_dir="-90" />
 
 </robot>

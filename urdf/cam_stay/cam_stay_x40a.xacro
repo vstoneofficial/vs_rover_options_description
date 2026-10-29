@@ -15,7 +15,7 @@
   https://www.vstone.co.jp/robotshop/index.php?main_page=product_info&cPath=156_923&products_id=5315 
 -->
   <joint name="cam_stay_frame_joint" type="fixed">
-    <origin xyz="${0.0+cam_mount_frame_y_pos} ${0.143+cam_mount_frame_x_pos} ${0.155+cam_mount_frame_z_pos}" rpy="0 0 1.5708" />
+    <origin xyz="${0.143+cam_mount_frame_x_pos} ${-cam_mount_frame_y_pos} ${0.155+cam_mount_frame_z_pos}" rpy="0 0 ${1.5708-pi/2}" />
     <parent link="base_link" />
     <child link="cam_mount_frame" />
   </joint>
